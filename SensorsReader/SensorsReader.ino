@@ -1,4 +1,3 @@
-
 #include <Wire.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -184,12 +183,17 @@ if(myTimer3(delayTime3, currentMillis) == 1){
     {
       sensors.requestTemperatures();
     //  Serial.print(" ");
-    Serial.print(outGSR);
+    
+    String output = String(outGSR,8) + ";" + String(outBPM,4) + ";" + String(sensors.getTempCByIndex(0),5) ;
+    Serial.print(output);
+    
+    /*Serial.print(outGSR);
     Serial.print(";");
     Serial.print(outBPM);
     Serial.print(";");
     Serial.print(sensors.getTempCByIndex(0));
     Serial.println();
+    */
     //Serial.flush();
   }
     //delay(100);
